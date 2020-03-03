@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: test-admin-server
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 8848

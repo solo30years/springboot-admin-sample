@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: test-admin-client
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8848" #spring admin server\u8BBF\u95EE\u5730\u5740
+        username: admin #spring admin server\u7528\u6237\u540D
+        password: admin #spring admin server\u5BC6\u7801
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name} #\u5BA2\u6237\u7AEF\u5143\u6570\u636E\u8BBF\u95EE\u7528\u6237
+            user.password: ${spring.security.user.password} #\u5BA2\u6237\u7AEF\u5143\u6570\u636E\u8BBF\u95EE\u5BC6\u7801
+          prefer-ip: true
+  security:
+    user:
+      name: client #\u5BA2\u6237\u7AEF\u7528\u6237\u540D
+      password: client # \u5BA2\u6237\u7AEF\u5BC6\u7801
+      roles: ACTUATOR_ADMIN #\u62E5\u6709\u89D2\u8272\uFF0C\u7528\u4E8E\u5141\u8BB8\u81EA\u8EAB\u8BBF\u95EE
+
+# \u5F00\u653E\u6240\u6709endpoint\uFF0C\u5B9E\u9645\u751F\u4EA7\u6839\u636E\u81EA\u8EAB\u9700\u8981\u5F00\u653E\uFF0C\u51FA\u4E8E\u5B89\u5168\u8003\u8651\u4E0D\u5EFA\u8BAE\u5168\u90E8\u5F00\u653E\u3002
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8849
